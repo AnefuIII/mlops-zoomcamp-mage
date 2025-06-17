@@ -1,5 +1,6 @@
 import pandas as pd
 from pathlib import Path
+from mage_ai.data_preparation.decorators import data_loader
 
 # This decorator tells Mage that this function is a data loader block
 # The **kwargs allows you to pass pipeline parameters like 'year' and 'month'
