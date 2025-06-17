@@ -1,0 +1,80 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/load_trip_data.py
+  downstream_blocks:
+  - prepare_features
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_trip_data
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_trip_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/prepare_features.py
+  downstream_blocks:
+  - train_linear_model
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: prepare_features
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_trip_data
+  uuid: prepare_features
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/train_linear_model.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: train_linear_model
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - prepare_features
+  uuid: train_linear_model
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-06-16 23:50:04.346428+00:00'
+data_integration: null
+description: this project is for predicting the duration of taxi trips
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: taxi-duration
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: taxi_duration
+variables_dir: /home/codespace/.mage_data/homework
+widgets: []
